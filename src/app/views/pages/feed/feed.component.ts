@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from "../../../services/post.service";
 
 @Component({
   selector: 'app-feed',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed.component.css'],
 })
 export class FeedComponent implements OnInit {
-  
+
   posts = [
     {
       id: 40,
@@ -60,14 +61,14 @@ export class FeedComponent implements OnInit {
         },
       ],
     },
-    
+
   ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  saveComment(){
+  saveComment() {
     alert("Comentário está sendo salvo!");
   }
 }
