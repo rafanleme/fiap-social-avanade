@@ -10,6 +10,7 @@ import { PostComponent } from './views/shared/post/post.component';
 import { CommentComponent } from './views/shared/comment/comment.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { PostDetailComponent } from './views/pages/post-detail/post-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostDetailComponent } from './views/pages/post-detail/post-detail.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
