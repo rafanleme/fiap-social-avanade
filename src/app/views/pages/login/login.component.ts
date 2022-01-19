@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -17,12 +19,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     const user = {
-      email: "rafanleme@gmail.com",
-      password: "123456"
+      email: "avanade@gmail.com",
+      password: "abcd4321"
     }
 
-    this.loginService.login(user).subscribe(data => {
-      console.log(data);
+    this.loginService.login(user).subscribe({
+      next: data => this.loginService.setLoggedUser(data),
+      error: ({ error }) => alert(error.error),
+      complete: () => this.router.navigate(["feed"])
     });
   }
 
