@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,7 +10,12 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  checkoutForm: any;
+  checkoutForm: FormGroup;
+
+  user = {
+    email: "",
+    password: ""
+  }
 
   constructor(
     private loginService: LoginService,
@@ -18,14 +23,22 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.checkoutForm = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      password: ''
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
   ngOnInit(): void {
   }
 
+  get validateEmail(){
+    return this.checkoutForm.get("email");
+  }
+
+  get validatePassword(){
+  return this.checkoutForm.get("password");
+  }
+  
   login() {
     const user = this.checkoutForm.value;
 

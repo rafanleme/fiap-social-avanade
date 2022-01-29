@@ -1,9 +1,10 @@
 <section>
     <form [formGroup]="checkoutForm" (ngSubmit)="login()">
       <img src="/assets/logo.png" />
-      <input type="email" formControlName="email" placeholder="E-mail" />
+      <input type="email" formControlName="email" [ngModel]="user.email" placeholder="E-mail" />
+      <span *ngIf="validateEmail?.errors">Campo obrigatório e deve ser um e-mail válido</span>
       <input type="password" formControlName="password" placeholder="Senha" />
-  
-      <button>Entrar</button>
+      <span *ngIf="validatePassword?.errors">Campo obrigatório e deve ter ao menos 3 caracteres</span>
+      <button [disabled]="validateEmail?.errors || validatePassword?.errors">Entrar</button>
     </form>
 </section>

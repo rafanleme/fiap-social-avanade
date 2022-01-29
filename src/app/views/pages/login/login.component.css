@@ -20,6 +20,12 @@ section > form {
   box-shadow: 0px 0px 20px #ed145b99;
 }
 
+section > form > span {
+  margin-top: -5px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
 section > form > img {
   width: 100px;
 }

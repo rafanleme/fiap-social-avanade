@@ -40,3 +40,7 @@ button {
 button:active{
   transform: scale(0.9);
 }
+
+button:disabled{
+  opacity: 0.5;
+}
